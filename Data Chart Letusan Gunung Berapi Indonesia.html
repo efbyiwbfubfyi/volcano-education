@@ -1,0 +1,245 @@
+<html>
+	<head>
+		<title> Volcano </title>
+		<link rel="icon" type="image/png" href="C:\Users\ASUS\OneDrive\Dokumen\Coba-coba html\Website\Logo.png">
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-family: Arial, sans-serif;
+			}
+			
+			.nav {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				background: black;
+				color: white;
+				padding: 15px 40px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				z-index: 1000;
+			}
+
+			.logo {
+				display: flex;
+				align-items: center; 
+				gap: 10px; 
+				font-size: 20px;
+				font-weight: bold;
+			}
+			
+			.logo img {
+				height: 40px;
+				width: auto;
+				object-fit: contain;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.nav-menu {
+				list-style: none;
+				display: flex;
+				gap: 30px;
+			}
+
+			.nav-menu li {
+				position: relative;
+			}
+
+			.nav-menu li a {
+				text-decoration: none;
+				color: white;
+				font-weight: bold;
+				font-size: 16px;
+				transition: color 0.3s ease;
+				padding: 5px 0;
+			}
+
+			.nav-menu li a:hover {
+				color: #ff0505;
+			}
+
+			.nav-menu li::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 0%;
+				height: 3px;
+				background-color: #ff0505;
+				transition: width 0.3s ease;
+			}
+
+			.nav-menu li:hover::after {
+				width: 100%;
+			}
+
+			.container {
+				padding: 100px 20px 20px; /* top padding = tinggi navbar + margin */
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+
+			.card {
+				background-color: #f5f5f5;
+				border-radius: 8px;
+				padding: 20px;
+				margin-bottom: 20px;
+				box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+				text-align: center;
+			}
+			
+			.next {
+				padding: 12px 25px;
+				font-size: 16px;
+				font-weight: bold;
+				border: none;
+				border-radius: 30px;
+				cursor: pointer;
+				color: white;
+				background: linear-gradient(45deg, #ff512f, #dd2476);
+				transition: all 0.3s ease;
+				box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+			}
+			
+			.next:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+			}
+			
+			.footer {
+				background: linear-gradient(to right, #1e2228, #2c3036);
+				color: white;
+				padding: 20px 40px;
+				margin-top: 50px;
+			}
+			
+			.footer-container {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-wrap: wrap;
+			}
+			
+			.footer-right a {
+				color: white;
+				text-decoration: none;
+				margin-left: 25px;
+				transition: 0.3s ease;
+			}
+			
+			.footer-right a:hover {
+			  color: #927dff;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class = "nav">
+			<div class = "logo"> 
+				<img src = "C:\Users\ASUS\OneDrive\Dokumen\Coba-coba html\Website\Semeru Eruption.webp">
+				VOLCANO
+			</div>
+			<div class = "button">
+				<ul class = "nav-menu">
+					<li><a href = "Jumlah letusan gunung berapi tiap tahunnya.html"> HOME </a></li>
+					<li><a href = "Fun Fact Letusan Gunung Berapi Indonesia.html"> FUN FACT </a></li>
+					<li><a href = "Data Letusan Gunung Berapi Indonesia.html"> DATA VOLCANO ERUPTION</a></li>
+					<li><a href = "#"> CHART VOLCANO ERUPTION</a></li>
+					<li><a href = "Source Volcano.html"> SOURCE </a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="card">
+				<h2 align = "center">DATA VOLCANO (BAR GRAPH)</h2>
+				<br>
+				<p>
+					<b>Here's the Bar Graph Volcano Eruption</b>
+					<br><br>
+					<canvas id="barChart" width="800" height="400"></canvas>
+				  <script>
+					const ctx = document.getElementById('barChart').getContext('2d');
+
+					const barChart = new Chart(ctx, {
+					  type: 'bar',
+					  data: {
+						labels: ['2019','2020','2021','2022','2023','2024','2025'],
+						datasets: [
+						  {
+							label: 'Semeru',
+							data: [19,49,1,36,31,2100, 2992],
+							backgroundColor: '#e7ff15'
+						  },
+						  {
+							label: 'Merapi',
+							data: [15,2,7,2,35,622,123],
+							backgroundColor: '#ff8115'
+						  },
+						  {
+							label: 'Bromo',
+							data: [43,0,0,0,0,0,0],
+							backgroundColor: '#1519ff'
+						  },
+						  {
+							label: 'Sumbing',
+							data: [0,0,0,0,0,0,0],
+							backgroundColor: '#15faff'
+						  }
+						]
+					  },
+					  options: {
+						responsive: true,
+						plugins: {
+						  title: {
+							display: true,
+							text: 'Jumlah Letusan Gunung 2019-2025',
+							font: { size: 30 }
+						  },
+						  tooltip: {
+							mode: 'index',
+							intersect: false
+						  }
+						},
+						scales: {
+						  x: { stacked: true },
+						  y: {
+							stacked: true,
+							beginAtZero: true,
+							title: {
+							  display: true,
+							  text: 'Jumlah Letusan'
+							}
+						  }
+						}
+					  }
+					});
+				  </script>
+				</p>
+				<br><br>
+				<a href = "Data Chart Letusan Gunung Berapi Indonesia 2.html">
+					<button class = "next"> NEXT PAGE &#8594; </button>
+				</a>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="footer-container">
+				<div class="footer-left">
+					© 2026 Studying Volcanoes Helps Us Understand And Reduce Natural Risks.
+				</div>
+
+				<div class="footer-right">
+					<a href="Contact Us.html">Contact Us</a>
+					<a href="Feedback.html">Send Us Feedback</a>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,382 @@
+<html>
+	<head>
+	  <title> Volcano </title>
+	  <link rel="icon" type="image/png" href="C:\Users\ASUS\OneDrive\Dokumen\Coba-coba html\Website\Logo.png">
+	  <style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+			}
+			
+			.nav {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				background: black;
+				color: white;
+				padding: 15px 40px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				z-index: 1000;
+			}
+			
+			.logo {
+				display: flex;
+				align-items: center; 
+				gap: 10px; 
+				font-size: 20px;
+				font-weight: bold;
+			}
+			
+			.logo img {
+				height: 40px;
+				width: auto;
+				object-fit: contain;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.nav-menu {
+				list-style: none;
+				display: flex;
+				gap: 30px;
+			}
+
+			.nav-menu li {
+				position: relative;
+			}
+
+			.nav-menu li a {
+				text-decoration: none;
+				color: white;
+				font-weight: bold;
+				font-size: 16px;
+				transition: color 0.3s ease;
+				padding: 5px 0;
+			}
+
+			.nav-menu li a:hover {
+				color: #ff0505;
+			}
+
+			.nav-menu li::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 0%;
+				height: 3px;
+				background-color: #ff0505;
+				transition: width 0.3s ease;
+			}
+
+			.nav-menu li:hover::after {
+				width: 100%;
+			}
+
+			.container {
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+				gap: 40px;
+				padding: 60px 40px;
+				flex-wrap: wrap;
+				padding: 100px 20px 20px; /* top padding = tinggi navbar + margin */
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+
+			.box {
+				background: white;
+				padding: 30px;
+				border-radius: 15px;
+				box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+				flex: 1;
+				min-width: 300px;
+				max-width: 500px;
+			}
+
+			h2 {
+				margin-bottom: 10px;
+			}
+
+			p {
+				color: #555;
+				line-height: 1.6;
+			}
+			
+			.contact-header {
+				background: #f4f5f7;   /* abu terang */
+				padding: 80px 20px;
+				text-align: center;
+				border-top: 4px solid #6b21a8; /* garis ungu atas */
+			}
+
+			.contact-header h1 {
+				font-size: 64px;
+				font-weight: 500;
+				color: #ff235c;  /* biru gelap */
+				margin-bottom: 20px;
+			}
+
+			.contact-header p {
+				font-size: 20px;
+				color: #444;
+			}
+
+			.form-group {
+				margin-bottom: 15px;
+			}
+
+			input, textarea {
+				width: 100%;
+				padding: 10px;
+				border-radius: 8px;
+				border: 1px solid #ccc;
+				font-size: 14px;
+			}
+
+			textarea {
+				height: 100px;
+				resize: none;
+			}
+
+			button {
+				width: 100%;
+				padding: 12px;
+				border: none;
+				border-radius: 8px;
+				background: #ff3b3b;
+				color: white;
+				font-weight: bold;
+				cursor: pointer;
+				transition: 0.3s;
+			}
+
+			button:hover {
+				background: #e60000;
+			}
+
+			ul {
+				padding-left: 20px;
+			}
+
+			li {
+				margin-bottom: 10px;
+			}
+			
+			.footer {
+				background: linear-gradient(to right, #1f2329, #2c3036);
+				color: #ffffff;
+				padding: 25px 50px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-wrap: wrap;
+				font-size: 14px;
+			}
+			
+			.footer-container {
+				display: flex;
+				flex: 1;
+				justify-content: space-between;
+				align-items: center;
+				flex-wrap: wrap;
+			}
+			
+			.footer-right a {
+				color: white;
+				text-decoration: none;
+				margin-left: 25px;
+				transition: 0.3s ease;
+			}
+			
+			.footer-right a:hover {
+				color: #927dff;
+			}
+			
+			.support-section {
+				background: #f5f6f8;
+				padding: 70px 40px;
+				text-align: center;
+			}
+
+			.support-section h2 {
+				font-size: 36px;
+				color: #ff235c;
+				margin-bottom: 50px;
+			}
+
+			.card-container {
+				display: flex;
+				justify-content: center;
+				gap: 40px;
+				flex-wrap: wrap;
+			}
+
+			.card {
+				background: #ffffff;
+				width: 350px;
+				padding: 40px 30px;
+				border-radius: 12px;
+				box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+				transition: 0.3s ease;
+			}
+
+			.card:hover {
+				transform: translateY(-8px);
+				box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+			}
+
+			.icon {
+				font-size: 50px;
+				margin-bottom: 20px;
+			}
+
+			.card h3 {
+				font-size: 22px;
+				margin-bottom: 15px;
+			}
+
+			.card p {
+				font-size: 15px;
+				color: #555;
+				margin-bottom: 25px;
+			}
+
+			.btn {
+				display: inline-block;
+				padding: 10px 20px;
+				border: 2px solid #00f6f6;
+				color: #00f6f6;
+				border-radius: 8px;
+				text-decoration: none;
+				transition: 0.3s ease;
+			}
+
+			.btn:hover {
+				background: #00f6f6;
+				color: white;
+			}
+	  </style>
+	</head>
+	<body>
+		<section class="contact-header">
+			<h1>Contact Us</h1>
+			<p>We're here to help with any questions about your volcano data website</p>
+		</section>
+		<nav class = "nav">
+			<div class = "logo"> 
+				<img src = "C:\Users\ASUS\OneDrive\Dokumen\Coba-coba html\Website\Semeru Eruption.webp">
+				VOLCANO ERUPTION 
+			</div>
+			<div class = "button">
+				<ul class = "nav-menu">
+					<li><a href = "Jumlah letusan gunung berapi tiap tahunnya.html"> HOME </a></li>
+					<li><a href = "Fun Fact Letusan Gunung Berapi Indonesia.html"> FUN FACT </a></li>
+					<li><a href = "Data Letusan Gunung Berapi Indonesia.html"> DATA VOLCANO ERUPTION</a></li>
+					<li><a href = "Data Chart Letusan Gunung Berapi Indonesia.html"> CHART VOLCANO ERUPTION</a></li>
+					<li><a href = "Source Volcano.html"> SOURCE </a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container">
+			<!-- RIGHT SIDE - WEBSITE INFO -->
+		  <div class="box">
+			<h2>About Our Website</h2>
+			<p>
+			  This website provides comprehensive information about volcanic activity 
+			  from 2019 to 2025. It combines scientific explanations with statistical data 
+			  to help users better understand eruption patterns.
+			</p>
+
+			<ul>
+			  <li>✔ Detailed explanation about volcanoes and eruption processes</li>
+			  <li>✔ Eruption data collected yearly (2019–2025)</li>
+			  <li>✔ Interactive Bar Graph for comparison</li>
+			  <li>✔ Line Graph to analyze trends over time</li>
+			  <li>✔ Pie Chart for percentage distribution</li>
+			</ul>
+
+			<p>
+			  Our goal is to make volcanic data easier to understand through clear 
+			  visualization and structured information.
+			</p>
+		  </div>
+		 
+
+		  <!-- LEFT SIDE - CONTACT -->
+		  <div class="box">
+			<h2>Contact Us</h2>
+			<p>Have a questions? Send us a message!</p>
+
+			<form>
+			  <div class="form-group">
+				<input type="text" placeholder="Your Name" required>
+			  </div>
+
+			  <div class="form-group">
+				<input type="email" placeholder="Your Email" required>
+			  </div>
+
+			  <div class="form-group">
+				<textarea placeholder="Your Message" required></textarea>
+			  </div>
+
+			  <button type="submit">Send Message</button>
+			</form>
+		  </div>
+		</div>
+		<section class="support-section">
+		  <h2>Gallery & Media</h2>
+
+		  <div class="card-container">
+
+			<!-- FOTO -->
+			<div class="card">
+			  <div class="icon">
+				📷
+			  </div>
+			  <h3>Photo Gallery</h3>
+			  <p>
+				Explore a collection of volcano images, eruption moments.
+			  </p>
+			  <a href="Gallery.html" class="btn">View Photos</a>
+			</div>
+
+			<!-- VIDEO -->
+			<div class="card">
+			  <div class="icon">
+				🎥
+			  </div>
+			  <h3>Video Gallery</h3>
+			  <p>
+				Watch recorded eruption events, and effect the enviroment.
+			  </p>
+			  <a href="Video.html" class="btn">Watch Videos</a>
+			</div>
+
+		  </div>
+		</section>
+		<footer class="footer">
+			<div class="footer-container">
+				<div class="footer-left" style = "font-size: 15px;">
+					© 2026 Studying Volcanoes Helps Us Understand And Reduce Natural Risks.
+				</div>
+
+				<div class="footer-right" style = "font-size: 15px;">
+					<a href="#">Contact Us</a>
+					<a href="Feedback.html">Send Us Feedback</a>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
